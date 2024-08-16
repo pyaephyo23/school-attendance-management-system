@@ -1,0 +1,80 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="dashboard"><i
+							class="feather-home"></i></a></li>
+					<li class="breadcrumb-item">Time Slot Lists</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-list text-primary mr-2"></i>Time Slot Lists
+						</h4>
+						<div class="">
+							<a href="#" class="btn btn-outline-secondary full-screen-btn">
+								<i class="feather-maximize-2"></i>
+							</a>
+						</div>
+					</div>
+					<hr>
+
+					<div class="col-12 display-table">
+						<table id="example"  class="display table-primary table-striped table-bordered" style="width: 100%">
+							<thead>
+								<tr>
+									<th>Course Code</th>
+									<th>Course Name</th>
+									<th>Description</th>
+									<th>Semester Name</th>
+									<th>Day Of Week</th>
+									<th>Start Time</th>
+									<th>End Time</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="c : ${course}">
+									<td th:text="${c.getCode()}"></td>
+									<td th:text="${c.getCourseName()}"></td>
+									<td th:text="${c.getDescription()}"></td>
+									<td th:text="${c.getSemesterName()}"></td>
+									
+									<td th:switch="${c.getDayOfWeek()}"     th:case="'1'">Monday</td>
+										<td th:switch="${c.getDayOfWeek()}"		th:case="'2'">Tuesday</td>
+										<td th:switch="${c.getDayOfWeek()}"		th:case="'3'">Wednesday</td>
+										<td th:switch="${c.getDayOfWeek()}"		th:case="'4'">Thursday</td>
+										<td th:switch="${c.getDayOfWeek()}"		th:case="'5'">Friday</td>
+									
+									<td th:text="${c.getStartTime()}"></td>
+									<td th:text="${c.getEndTime()}"></td>
+
+									<td>
+                                   <span>
+									<a title="Edit Timeslot Info" th:href="@{time-slot-edit/{id}(id = ${c.getId()})}" 
+									class="btn btn-outline-primary btn-sm ml-3" >
+									<i class="feather-edit"></i>
+								</a>
+								
+									</span>
+									</td>
+								</tr>
+								</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:replace="/commons/footer.html"></div>

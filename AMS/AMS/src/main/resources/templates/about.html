@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/commons/start.html"></div>
+
+<div class="container mt-5">
+           <div class="row d-flex justify-content-start align-items-center">
+               <div class="col-12 col-md-7 animate__animated animate__fadeInLeft">
+                   <div class="card" style="border-radius: 30px !important;">
+					<div class="card-body">
+						<h3>Welcome</h3>
+						<p style="text-indent: 30px; line-height: 1.5;">
+							Welcome to the Attendance Management System, a robust and intuitive platform designed to streamline the process of tracking and managing attendance. Our system is developed to meet the needs of educational institutions, businesses, and organizations of all sizes, ensuring accurate and efficient attendance recording.
+						</p>
+					</div>
+				   </div>
+				   <div class="card mt-3" style="border-radius: 30px !important;">
+				   					<div class="card-body">
+				   						<h3>Our Mission</h3>
+				   						<p style="text-indent: 30px; line-height: 1.5;">
+											Our mission is to provide an easy-to-use, reliable, and efficient solution for managing attendance, reducing administrative workload, and enhancing productivity. We aim to leverage technology to simplify attendance tracking, making it accessible and beneficial for all users.
+				   						</p>
+				   					</div>
+				   				   </div>
+               </div>
+               <div class="col-12 col-md-5 animate__animated animate__fadeInRight">
+                   <img src="./img/home1.jpg" alt="" class="homeimg">
+               </div>
+           </div>
+       </div>
+
+        <script src="./vendor/jquery-3.3.1.min.js"></script>
+        <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script>
+					let currentPage = location.href;
+					console.log(currentPage);
+					$(".nav-link").each(function() {
+						let links = "http://localhost:8080" + $(this).attr('href');
+						console.log(links);
+						if (currentPage == links) {
+							$(this).addClass('active');
+						}
+					});
+				</script>
+    <body>
+        
+    </body>
+
+</html>

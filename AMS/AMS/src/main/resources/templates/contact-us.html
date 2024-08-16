@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/commons/start.html"></div>
+<div class="container">
+	<div class="row d-flex justify-content-between align-items-start mt-5">
+		<div class="col-12 col-lg-5 animate__animated animate__fadeInLeft">
+			<div class="contact-page">
+				<h2 class="mb-4">Stay in touch</h2>
+				<hr>
+				<p class="h5 mb-3"><i class="feather-globe text-primary mr-2"></i>https://support.ucsyams.com</p>
+				<p class="h5 mb-3"><i class="feather-phone text-primary mr-2"></i>+959420010203</p>
+				<p class="h5 mb-3"><i class="feather-mail text-primary mr-2"></i>bryansmith@ucsyams.me</p>
+			</div>
+
+		</div>
+		<div class="col-12 col-lg-7">
+			<iframe class="contact-map shadow animate__animated animate__fadeInRight"
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4762.928081155288!2d96.09000938920782!3d17.002153349436334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1978daaea2ae7%3A0xc20eef5e24c4075!2sUniversity%20Of%20Computer%20Studies%2C%20Yangon.!5e0!3m2!1sen!2smm!4v1721063340937!5m2!1sen!2smm"
+				width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+	</div>
+</div>
+
+<script src="./vendor/jquery-3.3.1.min.js"></script>
+
+<script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+			let currentPage = location.href;
+			console.log(currentPage);
+			$(".nav-link").each(function() {
+				let links = "http://localhost:8080" + $(this).attr('href');
+				console.log(links);
+				if (currentPage == links) {
+					$(this).addClass('active');
+				}
+			});
+		</script>
+</body>
+
+</html>

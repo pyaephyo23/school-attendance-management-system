@@ -1,0 +1,68 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="dashboard"><i
+							class="feather-home"></i></a></li>
+					<li class="breadcrumb-item">Semester Lists</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-list text-primary mr-2"></i>Semester Lists
+						</h4>
+						<div class="">
+							<a href="#" class="btn btn-outline-secondary full-screen-btn">
+								<i class="feather-maximize-2"></i>
+							</a>
+						</div>
+					</div>
+					<hr>
+
+					<div class="col-12 display-table">
+						<table id="example"  class="display table-primary table-striped table-bordered" style="width: 100%">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Semester Name</th>
+									<th>Start Date</th>
+									<th>End Date</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="s : ${sem}">
+									<td th:text="${s.getId()}"></td>
+									<td th:text="${s.getSemesterName()}"></td>
+									<td th:text="${s.getStartDate()}"></td>
+									<td th:text="${s.getEndDate()}"></td>
+
+									<td>
+                                   <span>
+									<a title="Edit Semester Info" th:href="@{sem-edit/{id}(id = ${s.getId()})}" 
+									class="btn btn-outline-primary btn-sm ml-5" >
+									<i class="feather-edit"></i>
+								</a>
+								
+									</span>
+									</td>
+								</tr>
+								</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:replace="/commons/footer.html"></div>

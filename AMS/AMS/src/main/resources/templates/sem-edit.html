@@ -1,0 +1,79 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="/admin/dashboard"><i class="feather-home"></i></a></li>
+					<li class="breadcrumb-item">Edit Semester Info</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-edit text-primary mr-2"></i>Edit Semester Info
+						</h4>
+						<a href="/admin/sem-view" class="btn btn-outline-primary">
+							<i class="feather-list"></i>
+						</a>
+					</div>
+					<hr>
+					<form th:action="@{/admin/sem-edit}" th:each="li: ${list}" method="post">
+
+						<div class="row">
+							<div class="col-12 col-md-6">
+
+								<div class="form-group">
+									<label for="hg"><i class="fas fa-award mr-2 text-primary"></i>ID NO:
+									</label>
+									<input type="text" class="form-control" id="hg" th:name="id"
+										th:value="${li.getId()}" disabled />
+								</div>
+
+								<div class="form-group">
+									<label for="sem"><i class="fas fa-id-card mr-1 text-primary"></i>Semester Name
+									</label>
+									<input type="text" class="form-control" id="sem" th:name="semesterName"
+										th:value="${li.getSemesterName()}" disabled />
+								</div>
+
+							</div>
+
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="st"><i class="fas fa-user mr-2 text-primary"></i>Start Date: </label>
+									<input type="date" class="form-control" id="st" th:name="startDate"
+										th:value="${li.getStartDate()}" required />
+								</div>
+								<div class="form-group">
+									<label for="ed"><i class="fas fa-birthday-cake mr-1 text-primary"></i>End Date:
+									</label>
+									<input type="date" class="form-control" id="ed" th:name="endDate"
+										th:value="${li.getEndDate()}" required />
+								</div>
+
+								<input type="text" class="form-control" th:name="id" th:value="${li.getId()}" hidden />
+							</div>
+						</div>
+						<hr>
+						<div class="d-flex justify-content-end">
+							<button type="button" class="btn btn-outline-danger mr-3"
+														th:onclick="|window.location.href='/admin/sem-view'|">Cancel</button>
+													<button type="submit" class="btn btn-outline-primary">Update</button>
+						</div>
+						
+
+
+					</form>
+				</div>
+			</div>
+		</div>
+		<div th:replace="/commons/footer.html"></div>

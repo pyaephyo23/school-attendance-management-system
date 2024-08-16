@@ -1,0 +1,88 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="dashboard"><i
+							class="feather-home"></i></a></li>
+					<li class="breadcrumb-item">Student List</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-list text-primary mr-2"></i>Student List
+						</h4>
+						<div class="">
+							<a href="#" class="btn btn-outline-secondary full-screen-btn">
+								<i class="feather-maximize-2"></i>
+							</a>
+						</div>
+					</div>
+					<hr>
+					<div th:if="${test}" class="text-nowrap">There is no student in your semester.</div>
+
+					<div class="col-12 display-table" th:if="${test == false}">
+						<table id="example"  class="text-nowrap display table-striped table-primary table-bordered" style="width: 100%">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Roll No.</th>
+									<th>Email</th>
+									<th>NRC</th>
+									<th>Birthday</th>
+									<th>Phone</th>
+									<th>Major</th>
+									<th>Semester</th>
+									<th>Register Date</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="std : ${student}">
+									<td class="text-nowrap" th:text="${std.getName()}"></td>
+									<td class="text-nowrap" th:text="${std.getRollNo()}"></td>
+									<td class="text-nowrap" th:text="${std.getEmail()}"></td>
+									<td class="text-nowrap" th:text="${std.getNrcNo()}"></td>
+									<td class="text-nowrap" th:text="${std.getDob()}"></td>
+									<td class="text-nowrap" th:text="${std.getPhoneNo()}"></td>
+									<td class="text-nowrap" th:text="${std.getMajor}"></td>
+									<td class="text-nowrap" th:text="${std.getSemester()}"></td>
+									<td class="text-nowrap" th:text="${std.getRegisterDate()}"></td>
+
+									<td class="text-nowrap" >
+                                   <span th:if="${con}">
+									<a title="Edit Student Info" th:href="@{stEdit-list/{id}(id = ${std.getId()})}" class="btn btn-outline-primary btn-sm mr-2" >
+										<i class="feather-edit"></i>
+									</a>
+									<a title="Delete this Student" th:href="@{deleteStudent/{id}(id = ${std.getId()})}" class="btn btn-outline-danger btn-sm" >
+										<i class="fas fa-trash-alt"></i>
+									</a>
+									</span>
+									
+									<span  th:if="${sign}">
+									<a th:href="@{sign-student/{id}/{semesterName}(id = ${std.getId()}, semesterName = ${std.getSemester()})}"
+									
+									
+									class="btn btn-outline-primary btn-sm ml-1" >
+									Enroll</a></span>
+									
+									</td>
+								</tr>
+								</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:replace="/commons/footer.html"></div>

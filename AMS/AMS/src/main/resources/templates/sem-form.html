@@ -1,0 +1,89 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="dashboard"><i
+							class="feather-home"></i></a></li>
+					<li class="breadcrumb-item"><span th:text="${tit}"></span>Create
+						Semesters</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12 col-md-8">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-plus-circle text-primary mr-2"></i>Create
+							Semesters
+						</h4>
+						<a href="/classRoster/sem-view" class="btn btn-outline-primary"> <i
+							class="feather-list"></i>
+						</a>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-12">
+						
+								<form th:action="@{/classRoster/sem-form}" th:object="${sem}"
+									method="post">
+
+									<div class="row">
+										<div class="col-12 col-md-6">
+											<div class="form-group">
+												<label for="semesterName"><i
+													class="fas fa-book mr-2 text-primary"></i>Semester Name: </label>
+										<select class="custom-select" id="semesterName" th:name="semesterName">
+										<option
+										 th:value="SEM-I" th:text="SEM-I"></option><option
+										 th:value="SEM-II" th:text="SEM-II"></option><option
+										 th:value="SEM-III" th:text="SEM-III"></option><option
+										 th:value="SEM-IV" th:text="SEM-IV"></option><option
+										 th:value="SEM-V" th:text="SEM-V"></option><option
+										 th:value="SEM-VI" th:text="SEM-VI"></option><option
+										 th:value="SEM-VII" th:text="SEM-VII"></option><option
+										 th:value="SEM-VIII" th:text="SEM-VIII"></option><option
+										 th:value="SEM-IX" th:text="SEM-IX"></option>
+										 </select>
+											</div>
+										</div>
+										<div class="col-12 col-md-6">
+											<div class="form-group">
+												<label for="startDate"><i
+													class="fas fa-book-open mr-2 text-primary"></i>Semester Start Date:
+												</label> <input type="date" class="form-control" id="startDate"
+													name="startDate" required/>
+											</div>
+										</div>
+										<div class="col-12 col-md-6">
+											<div class="form-group">
+												<label for="endDate"><i
+													class="fas fa-book-open mr-2 text-primary"></i>Semester End Date:
+												</label> <input type="date" class="form-control" id="endDate"
+													name="endDate" required />
+											</div>
+										</div>
+									</div>
+
+
+									<button class="btn btn-primary float-right btn-lg"
+										type="submit">Create</button>
+										<input type="reset" onclick="this.form.reset();"
+					style="float: right;" class="btn btn-danger btn-lg mb-4" name="btn_cancel"
+										value="Cancel">
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+<div th:replace="/commons/footer.html"></div>

@@ -1,0 +1,68 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="dashboard"><i class="feather-home"></i></a></li>
+					<li class="breadcrumb-item"><span th:text="${tit}"></span>Attendance
+						View</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-search text-primary mr-2"></i>Attendance
+
+						</h4>
+						<a href="/classRoster/dash" class="btn btn-outline-primary">
+							<i class="fas fa-arrow-left mr-1"></i>Back
+						</a>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-12">
+
+							<form method="post" action="attendance" th:object="${attendance}">
+
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="startDate"><i class="fas fa-calendar-alt mr-2 text-primary"></i>
+												Start Date:
+											</label> <input type="date" class="form-control" id="startDate"
+												name="startDate" required />
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="endDate"><i class="fas fa-calendar-alt mr-2 text-primary"></i>
+												End
+												Date: </label> <input type="date" class="form-control" id="endDate"
+												name="endDate" required />
+										</div>
+									</div>
+								</div>
+								<hr>
+								<div class="row d-flex justify-content-end align-items-center">
+									<input type="reset" onclick="this.form.reset();" 
+										class="btn btn-outline-danger mr-3" name="btn_cancel" value="Cancel">
+									<button class="btn btn-outline-primary float-right" type="submit">Search</button>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="/commons/footer.html"></div>

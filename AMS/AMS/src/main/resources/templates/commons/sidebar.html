@@ -1,0 +1,119 @@
+<div class="col-12 col-lg-3 col-xl-2 vh-100 sidebar">
+	<div
+		class="d-flex justify-content-between align-items-center py-2 mt-3">
+		<div class="">
+			<span class="bg-primary p-2 pt-3 rounded mr-1"> <i
+				class="feather-colleage text-light h4"></i>
+			</span> <span class="font-weight-bolder h4 text-primary text-uppercase">UCSY-AMS</span>
+		</div>
+		<button class="hide-sidebar-btn btn btn-light d-block d-lg-none">
+			<i class="feather-x text-primary" style="font-size: 2em;"></i>
+		</button>
+	</div>
+	<div class="nav-menu">
+		<ul>
+			<li class="menu-item"><span th:if="${condition}"><a
+					href="/admin/dashboard" class="menu-item-link active"> <span>
+							<i class="feather-home"></i> <span th:text="${titles}"></span>
+					</span>
+				</a></span> <span th:if="${check}"><a href="/classRoster/dashboard"
+					class="menu-item-link active"> <span> <i
+							class="feather-home"></i> <span th:text="${titles}"></span>
+					</span>
+				</a></span></li>
+
+			<li th:if="${condition}" class="menu-title"><span>Manage
+					Roaster</span></li>
+
+			<li th:if="${condition}" class="menu-spacer"><a
+				href="/admin/class-roster" class="menu-item-link"> <span>
+						<i class="feather-list"></i> Roaster Lists
+				</span>
+			</a></li>
+
+			<li class="menu-title"><span>Manage Teachers</span></li>
+
+			<li class="menu-spacer"><a href="/admin/teacher-list"
+				class="menu-item-link" th:if="${condition}"> <span> <i
+						class="feather-list"></i> Teacher Lists
+				</span>
+			</a> <a href="/classRoster/teacher-list" class="menu-item-link"
+				th:if="${check}"> <span> <i class="feather-list"></i>
+						Teacher Lists
+				</span>
+			</a> <span th:if="${condition}"> <a href="/admin/teacher-register"
+					class="menu-item-link"> <span> <i
+							class="feather-plus-circle"></i> Register Teachers
+					</span>
+				</a>
+			</span></li>
+			<li class="menu-title"><span>Manage Student</span></li>
+
+			<li class="menu-spacer"><span th:if="${condition}"> <a
+					href="/admin/student-list" class="menu-item-link"> <span>
+							<i class="feather-list"></i> Student Lists
+					</span>
+				</a>
+			</span> <span th:if="${check}"> <a href="/classRoster/student-list"
+					class="menu-item-link"> <span> <i class="feather-list"></i>
+							Student Lists
+					</span>
+				</a>
+			</span></li>
+
+			<li><span th:if="${condition}"><a
+					href="/admin/upload_form" class="menu-item-link"> <span>
+							<i class="feather-plus-circle"></i> Register Students
+					</span>
+				</a> </span></li>
+			<li th:if="${condition}" class="menu-title"><span>Manage
+					Semester</span></li>
+
+			<li th:if="${condition}" class="menu-spacer"><a
+				href="/admin/sem-view" class="menu-item-link"> <span> <i
+						class="feather-list"></i> View Semesters
+				</span>
+			</a> <!-- 	<a href="/classRoster/sem-form"
+							class="menu-item-link"> <span>  <i class="feather-plus-circle"></i>   
+									  Create Semesters
+							</span>
+							
+						</a>
+						 --></li>
+
+			<li th:if="${check}" class="menu-title"><span>Manage
+					Course</span></li>
+
+			<li th:if="${check}" class="menu-spacer"><a
+				href="/classRoster/course-view" class="menu-item-link"> <span>
+						<i class="feather-list"></i> View Courses
+				</span>
+			</a> <a href="/classRoster/course-form" class="menu-item-link"> <span>
+						<i class="feather-plus-circle"></i> Create Courses
+				</span>
+			</a></li>
+
+
+			<li th:if="${check}" class="menu-title"><span>Manage
+					TimeSlot</span></li>
+
+			<li th:if="${check}" class="menu-spacer"><a
+				href="/classRoster/time-slot-view" class="menu-item-link"> <span>
+						<i class="feather-list"></i> View Time Slot
+				</span>
+			</a> <a href="/classRoster/time-slot-form" class="menu-item-link"> <span>
+						<i class="feather-plus-circle"></i> Create Time Slot
+				</span>
+			</a></li>
+
+			<li th:if="${check}" class="menu-title"><span>Manage
+					Attendance</span></li>
+
+			<li th:if="${check}" class="menu-spacer"><a
+				href="/classRoster/attendance" class="menu-item-link"> <span>
+						<i class="feather-list"></i> Students Attendance
+				</span>
+			</a></li>
+		</ul>
+	</div>
+</div>

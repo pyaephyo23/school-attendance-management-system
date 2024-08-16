@@ -1,0 +1,187 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="/admin/dash"><i class="feather-home"></i></a></li>
+					<li class="breadcrumb-item"><span th:text="${tit}"></span>Register
+						Teachers</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-plus-circle text-primary mr-2"></i>Register
+							Teachers
+						</h4>
+						<a href="/admin/teacher-list" class="btn btn-outline-primary">
+							<i class="feather-list"></i>
+						</a>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-12">
+
+							<form th:action="@{/admin/teacher-register}" method="post" th:oject="${teacher}">
+
+								<div class="row mb-3">
+									<div class="col-sm-4 mobile-input">
+										<label class="sr-only" for="name">Name</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<div class="input-group-text">
+													<span><i class="fas fa-user text-primary"></i></span>
+												</div>
+											</div>
+											<input type="text" class="form-control" id="name" name="name"
+												placeholder="Name">
+										</div>
+									</div>
+									<div class="col-sm-4 mobile-input">
+										<label class="sr-only" for="email">Email</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<div class="input-group-text">
+													<span><i class="fas fa-envelope text-primary"></i></span>
+												</div>
+											</div>
+											<input type="email" class="form-control" id="email" name="email"
+												placeholder="Email">
+										</div>
+									</div>
+									<div class="col-sm-4 mobile-input">
+										<label class="sr-only" for="bod">Password</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<div class="input-group-text">
+													<span><i class="fas fa-key text-primary"></i></span>
+												</div>
+											</div>
+											<input type="password" class="form-control" id="password" name="password"
+												placeholder="Password">
+										</div>
+									</div>
+
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-4 mobile-input">
+										<label class="sr-only" for="nrc">NRC No.</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<div class="input-group-text">
+													<span><i class="fas fa-id-card text-primary"></i></span>
+												</div>
+											</div>
+											<input type="text" class="form-control" id="nrc" name="nrcNo"
+												placeholder="NRC No.">
+										</div>
+									</div>
+									<div class="col-sm-4 mobile-input">
+										<label class="sr-only" for="bod">BOD</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<div class="input-group-text">
+													<span><i class="fas fa-birthday-cake text-primary"></i></span>
+												</div>
+											</div>
+											<input type="date" class="form-control" id="bod" name="dob"
+												placeholder="Birthday">
+										</div>
+									</div>
+									<div class="col-sm-4 mobile-input">
+										<label class="sr-only" for="phone">phone</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<div class="input-group-text">
+													<span><i class="fas fa-phone text-primary"></i></span>
+												</div>
+											</div>
+											<input type="text" class="form-control" id="phone" name="phoneNo"
+												placeholder="Phone Number">
+										</div>
+									</div>
+
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-4 mobile-input">
+										<label class="" for="rank"><i
+												class="fas fa-university text-primary mr-1"></i>Rank:
+										</label> <select class="custom-select" id="rank" name="teacherRank">
+											<option selected disabled>Select ---</option>
+											<option value="Rector">Rector</option>
+											<option value="Pro_Rector">Pro_Rector</option>
+											<option value="Professor">Professor</option>
+											<option value="Associate_Professor">Associate_Professor</option>
+											<option value="Lecturer">Lecturer</option>
+											<option value="Assistant_Lecturer">Assistant_Lecturer</option>
+											<option value="Tutor">Tutor</option>
+										</select>
+									</div>
+									<div class="col-sm-4 mobile-input">
+										<label class="" for="hd"><i class="fas fa-award text-primary mr-1"></i>Highest
+											Degree:</label> <select class="custom-select" id="hd" name="highestDegree">
+											<option selected disabled>Select ---</option>
+											<option value="Ph.D(IT)">Ph.D(IT)</option>
+											<option value="Ph.D(CHD)">Ph.D(CHD)</option>
+											<option value="M.C.Sc">M.C.Sc</option>
+											<option value="M.C.Tech">M.C.Tech</option>
+											<option value="MISC">MISC</option>
+										</select>
+									</div>
+									<div class="col-sm-4 mobile-input">
+										<label class="" for="faculty"><i class="fas fa-building text-primary mr-1"></i>
+											Faculty:
+										</label> <select class="custom-select my-1 mr-sm-2" id="faculty" name="faculty">
+											<option selected disabled>Select ---</option>
+											<option value="Faculty of Computer Science">Faculty of Computer Science
+											</option>
+											<option value="Faculty of Computer Science & Technology">Faculty of Computer
+												Science & Technology</option>
+											<option value="Faculty of Information Science">Faculty of Information
+												Science</option>
+											<option value="Faculty of Computing">Faculty of Computing</option>
+											<option value="Department of Language">Department of Language</option>
+											<option value="Department of Natural Science">Department of Natural Science
+											</option>
+											<option value="Department of Information Technology Supporting &
+																							Maintenance">Department of Information Technology Supporting &
+												Maintenance</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row mb-3 d-flex justify-content-center">
+									<div class="col-sm-4">
+										<label class="" for="reg"><i
+												class="fas fa-registered text-primary mr-1"></i>Register
+											Date:</label> <input type="date" class="form-control" id="reg"
+											name="registerDate" placeholder="Register Date">
+									</div>
+								</div>
+								<br>
+								<hr>
+								<div class="row d-flex justify-content-end">
+									<input type="reset" onclick="this.form.reset();" style="float: right;"
+										class="btn btn-outline-danger mb-4 mr-3" name="btn_cancel" value="Cancel">
+									<input type="submit" style="float: right;" class="btn btn-outline-primary mb-4"
+										name="btn_register" value="Register">
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div th:replace="/commons/footer.html"></div>

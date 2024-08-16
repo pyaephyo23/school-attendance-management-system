@@ -1,0 +1,104 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="/classRoster/dashboard"><i class="feather-home"></i></a></li>
+					<li class="breadcrumb-item">Edit Timeslot Info</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-edit text-primary mr-2"></i> Edit Timeslot Info
+						</h4>
+						<a href="/classRoster/time-slot-view" class="btn btn-outline-primary"> <i
+								class="feather-list"></i>
+						</a>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-12">
+							<form th:action="@{/classRoster/time-slot-edit}" th:each="li: ${list}" method="post">
+
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="code"><i class="fas fa-book mr-2 text-primary"></i>Course Code:
+											</label> <input type="text" class="form-control" id="code" name="code"
+												th:value="${li.getCode()}" disabled />
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="coursename"><i
+													class="fas fa-book-open mr-2 text-primary"></i>Course Name:
+											</label> <input type="text" class="form-control" id="coursename"
+												name="courseName" th:value="${li.getCourseName()}" disabled />
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="semesterName"><i
+													class="fas fa-book-open mr-2 text-primary"></i>Semester
+												Name: </label> <input type="text" class="form-control" id="semesterName"
+												name="semesterName" th:value="${li.getSemesterName()}" disabled />
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="dow"><i class="fas fa-calendar-alt mr-2 text-primary"></i>Day of
+												week:</label> <select class="custom-select" id="dow" name="dayOfWeek">
+												<option value="1">Monday</option>
+												<option value="2">Tuesday</option>
+												<option value="3">Wednesday</option>
+												<option value="4">Thursday</option>
+												<option value="5">Friday</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="starttime"><i
+													class="fas fa-stopwatch mr-2 text-primary"></i>Course Start
+												Time: </label> <input type="Time" class="form-control" id="starttime"
+												name="startTime" th:value="${li.getStartTime()}" />
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="endtime"><i
+													class="fas fa-stopwatch mr-2 text-primary"></i>Course End
+												Time: </label> <input type="Time" class="form-control" id="endtime"
+												name="endTime" th:value="${li.getEndTime()}" />
+										</div>
+									</div>
+									<input type="text" class="form-control" th:name="id" th:value="${li.getId()}"
+										hidden />
+
+								</div>
+								<hr>
+								<div class="row d-flex justify-content-end align-items-center">
+										<button type="button" class="btn btn-outline-danger mr-3"
+											th:onclick="|window.location.href='/classRoster/time-slot-view'|">Cancel</button>
+										<button type="submit" class="btn btn-outline-primary float-right">Update</button>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div th:replace="/commons/footer.html"></div>

@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title th:text="${titles}"></title>
+<link rel="shortcut icon" th:href="@{/img/logo.png}" type="image/x-icon">
+<link rel="stylesheet"
+	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet"
+	th:href="@{/vendor/feather-icons-web/feather.css}">
+	<link rel="stylesheet"
+		th:href="@{/vendor/fontawesome-free/css/all.min.css}">
+<link rel="stylesheet"
+	th:href="@{/vendor/data_table/jquery.dataTables.min.css}">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script th:inline="javascript">
+
+		function calculateAttendance(attendanceData){
+			const attendancePercentage = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+			const absentPercentage = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+		
+			attendanceData.forEach(each => {
+				switch (each.semesterName) {
+					case "SEM-I" :
+						attendancePercentage[0] = (each.currentAttendance / each.totalAttendance) * 100;
+						absentPercentage[0] = 100 - attendancePercentage[0];
+						break;
+					case "SEM-II" :
+						attendancePercentage[1] = (each.currentAttendance / each.totalAttendance) * 100;
+						absentPercentage[1] = 100 - attendancePercentage[1];
+						break;
+					case "SEM-III" :
+						attendancePercentage[2] = (each.currentAttendance / each.totalAttendance) * 100;
+						absentPercentage[2] = 100 - attendancePercentage[2];
+						break;
+					case "SEM-IV" :
+						attendancePercentage[3] = (each.currentAttendance / each.totalAttendance) * 100;
+						absentPercentage[3] = 100 - attendancePercentage[3];
+						break;
+					case "SEM-V" :
+						attendancePercentage[4] = (each.currentAttendance / each.totalAttendance) * 100;
+						absentPercentage[4] = 100 - attendancePercentage[4];
+						break;
+					case "SEM-VI" :
+						attendancePercentage[5] = (each.currentAttendance / each.totalAttendance) * 100;
+						absentPercentage[5] = 100 - attendancePercentage[5];
+						break;
+					case "SEM-VII" :
+						attendancePercentage[6] = (each.currentAttendance / each.totalAttendance) * 100;
+						absentPercentage[6] = 100 - attendancePercentage[6];
+						break;
+					case "SEM-VIII" :
+						attendancePercentage[7] = (each.currentAttendance / each.totalAttendance) * 100;
+						absentPercentage[7] = 100 - attendancePercentage[7];
+						break;
+					case "SEM-XV" :
+						attendancePercentage[8] = (each.currentAttendance / each.totalAttendance) * 100;
+						absentPercentage[8] = 100 - attendancePercentage[8];
+						break;
+				}
+			})
+
+			return {attendancePercentage, absentPercentage }
+		}
+
+
+		function showBarChatData(semesterArr, attendancePercentage, absentPercentage) {
+			$('.counter-up').counterUp({
+				delay: 10,
+				time: 1000
+			});
+
+			var ctx = document.getElementById('myChart').getContext('2d');
+			console.log("zzzzz");
+			console.log("0000", attendancePercentage);
+			let delayed;
+			var myChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: semesterArr,
+					datasets: [
+
+						{
+							label: 'Attendance Percentage',
+							data: attendancePercentage,
+							backgroundColor: [
+								'rgba(75, 192, 192, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+							],
+							borderColor: [
+								'rgba(75, 192, 192, 1)',
+								'rgba(75, 192, 192, 1)',
+								'rgba(75, 192, 192, 1)',
+								'rgba(75, 192, 192, 1)',
+								'rgba(75, 192, 192, 1)',
+								'rgba(75, 192, 192, 1)',
+								'rgba(75, 192, 192, 1)',
+								'rgba(75, 192, 192, 1)',
+								'rgba(75, 192, 192, 1)',
+								'rgba(75, 192, 192, 1)',
+							],
+							borderWidth: 1,
+							tension: 0
+						},
+						{
+							label: 'Absent Percentage',
+							data: absentPercentage,
+							backgroundColor: [
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(255, 99, 132, 0.2)',
+							],
+							borderColor: [
+								'rgba(255,99,132,1)',
+								'rgba(255,99,132,1)',
+								'rgba(255,99,132,1)',
+								'rgba(255,99,132,1)',
+								'rgba(255,99,132,1)',
+								'rgba(255,99,132,1)',
+								'rgba(255,99,132,1)',
+								'rgba(255,99,132,1)',
+								'rgba(255,99,132,1)',
+								'rgba(255,99,132,1)',
+							],
+							borderWidth: 1,
+							tension: 0
+						},
+
+					]
+				},
+				options: {
+					animation: {
+						onComplete: () => {
+							delayed = true;
+						},
+						delay: (context) => {
+							let delay = 0;
+							if (context.mode === 'default' && !delayed) {
+								delay = context.dataIndex * 300 + context.datasetIndex * 100;
+							}
+							return delay;
+						},
+					},
+
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
+					}
+				}
+			});
+		}
+
+
+		document.addEventListener("DOMContentLoaded", function () {
+			let semesterArr = ['Sem-I', 'Sem-II', 'Sem-III', 'Sem-IV', 'Sem-V', 'Sem-VI', 'Sem-VII', 'Sem-VIII', 'Sem-IX'];
+
+			// from pass data from java
+			let jsonArray = [[${jsonArray}]];
+			let attendanceData = JSON.parse(jsonArray);
+
+			console.log("dd", attendanceData);
+			// calculate attendance data
+			const { attendancePercentage, absentPercentage } = calculateAttendance(attendanceData);
+
+			console.log("%", attendancePercentage);
+			showBarChatData(semesterArr, attendancePercentage, absentPercentage);
+		});
+	</script>
+	 <script th:inline="javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            let jsonArray = [[${jsonArray}]];
+            let timeSlotData = JSON.parse(jsonArray);
+			const teacherArr = [];
+			console.log("backend", timeSlotData);
+            const fixTimeSlot = [
+				{day_of_week: 1, "course1": "", "course2" : "", "course3" : "", "course4" : "", "course5" : "", "course6" : ""},
+				{day_of_week: 2, "course1": "", "course2" : "", "course3" : "", "course4" : "", "course5" : "", "course6" : ""},
+				{day_of_week: 3, "course1": "", "course2" : "", "course3" : "", "course4" : "", "course5" : "", "course6" : ""},
+				{day_of_week: 4, "course1": "", "course2" : "", "course3" : "", "course4" : "", "course5" : "", "course6" : ""},
+				{day_of_week: 5, "course1": "", "course2" : "", "course3" : "", "course4" : "", "course5" : "", "course6" : ""}
+			];
+
+
+            timeSlotData.forEach(each => {
+				
+				if(each.teacher_name){
+					if(teacherArr.length > 0 ){
+											const found = teacherArr.find(element => element.teacher_name  === each.teacher_name  && element.course_name  === each.course_name  );
+											if(!found){
+												teacherArr.push({ course_name: each.course_name,  teacher_name: each.teacher_name});
+											}
+									}else{
+										teacherArr.push({ course_name: each.course_name,  teacher_name: each.teacher_name});
+									}
+				}
+				
+
+				console.log(each.day_of_week);				
+				switch (each.day_of_week){
+
+					case 1:	
+						fixTimeSlot[0] = checkStartTime(fixTimeSlot[0], each);
+						break;
+					case 2:
+						fixTimeSlot[1] = checkStartTime(fixTimeSlot[1], each);
+						break;
+					case 3:
+						fixTimeSlot[2] = checkStartTime(fixTimeSlot[2], each);
+						break;
+					case 4:
+						fixTimeSlot[3] = checkStartTime(fixTimeSlot[3], each);
+						break;
+					case 5:
+						fixTimeSlot[4] = checkStartTime(fixTimeSlot[4], each);
+						break;
+                }
+            })
+            console.log(fixTimeSlot);
+
+            fixTimeSlot.forEach(each => {
+                document.getElementById("tableBody").innerHTML += `
+                <tr>
+                    <th scope="row">${each.day_of_week == 1 ? "Monday" : each.day_of_week == 2 ? "Tuesday" : each.day_of_week == 3 ? "Wednesday" : each.day_of_week == 4 ? "Thursday" : "Friday"}</th>
+                    <td>${each.course1}</td>
+                    <td>${each.course2}</td>
+                    <td>${each.course3}</td>
+                    <td></td>
+                    <td>${each.course4}</td>
+                    <td>${each.course5}</td>
+                    <td>${each.course6}</td>
+                </tr>
+            `
+            })
+			
+			if(teacherArr.length > 0 ){
+				teacherArr.forEach(each => {
+								document.getElementById("timeTableDes").innerHTML += `
+								<div class="col-8">
+									<div class="row">
+										 
+									<div class="col-3">
+										<p>${each.course_name}</p>
+										</div>
+										<div class="col-1">
+											-
+											</div>
+									<div class="col-6">
+										
+													<p>${each.teacher_name}</p>
+													</div>
+													
+													</div>
+								</div>
+								`
+							})
+			}
+			
+
+
+        });
+
+		function checkStartTime(timeSlot, each){
+			switch (each.start_time){
+				case "09:00" : 
+				console.log(each);
+					timeSlot = {...timeSlot, "course1": each.course_name}
+					break;
+				case "10:00" :
+					timeSlot = { ...timeSlot, "course2" : each.course_name };
+					break;
+				case "11:00" :
+					timeSlot = { ...timeSlot, "course3" : each.course_name };
+					break;
+				case "12:30" :
+					timeSlot = { ...timeSlot, "course4" : each.course_name };
+					break;
+				case "13:30" :
+					timeSlot = { ...timeSlot, "course5" : each.course_name };
+					break;
+				case "14:30" :
+					timeSlot = { ...timeSlot, "course6" : each.course_name };
+					break;
+			}
+
+			return timeSlot;
+		}
+    </script>
+    
+</head>
+
+<body>
+	<!--  -->
+	<section class="main container-fluid">
+		<div class="row">

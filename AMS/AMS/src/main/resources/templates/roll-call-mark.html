@@ -1,0 +1,73 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/stsidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="dashboard"><i
+							class="feather-home"></i></a></li>
+					<li class="breadcrumb-item"><span th:text="${tit}"></span>Attendance
+						View</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-search text-primary mr-2"></i>Attendance
+
+						</h4>
+						<a href="/teacher/attendance" class="btn btn-outline-primary">
+							<i class="fas fa-arrow-left mr-2"></i>Back
+						</a>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-12 display-table">
+							<form method="get" th:action="@{/teacher/attendance/download}">
+								<button class="btn btn-outline-primary">Download Excel</button>
+
+
+								<br>
+								<br>
+								<table class="table-primary table-bordered">
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>Name</th>
+											<th>Email</th>
+											<th>Individual Attendance</th>
+											<th>Total Attendance</th>
+											<th>Mark</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="att, itemStart : ${attendance}">
+											<td th:text="${itemStart.index + 1}"></td>
+											<td th:text="${att.name}"></td>
+											<td th:text="${att.email}"></td>
+											<td th:text="${att.currentAttendance}"></td>
+											<td th:text="${att.totalAttendance}"></td>
+											<td th:text="${att.mark}"></td>
+										</tr>
+
+									</tbody>
+
+								</table>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="/commons/footer.html"></div>

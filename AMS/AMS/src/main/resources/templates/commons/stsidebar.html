@@ -1,0 +1,54 @@
+<div class="col-12 col-lg-3 col-xl-2 vh-100 sidebar">
+	<div
+		class="d-flex justify-content-between align-items-center py-2 mt-3">
+		<div class="">
+			<span class="bg-primary p-2 pt-3 rounded mr-1"> <i
+				class="feather-colleage text-light h4"></i>
+			</span> <span class="font-weight-bolder h4 text-primary text-uppercase">UCSY-AMS</span>
+		</div>
+		<button class="hide-sidebar-btn btn btn-light d-block d-lg-none">
+			<i class="feather-x text-primary" style="font-size: 2em;"></i>
+		</button>
+	</div>
+	<div class="nav-menu">
+		<ul>
+			<li class="menu-item">
+						<span th:if="${condition}" ><a href="/teacher/dashboard"
+							class="menu-item-link active"> <span> 
+							<i class="feather-home"></i> <span th:text="${titles}"></span>
+							</span>
+						</a></span>
+						<span th:if="${check}" ><a href="/student/dashboard"
+							class="menu-item-link active"> <span> 
+							<i class="feather-home"></i> <span th:text="${titles}"></span>
+							</span>
+						</a></span>
+						</li>
+			<li class="menu-title"><span> Attendance</span></li>
+
+			<li class="menu-spacer">
+			
+			<span th:if= ${condition}>
+			<a href="/teacher/take-attendance"
+				class="menu-item-link"> <span> <i class="fas fa-sticky-note"></i>
+						Take Attendance
+				</span>
+			</a>
+			</span>
+			<span th:if= ${condition}>
+			 <a href="/teacher/attendance" class="menu-item-link"> <span> <i
+						class="feather-list"></i> Roll Call Mark
+				</span>
+			</a> 
+			</span>
+			<span th:if= ${check}>
+			<a href="/student/rollCall" class="menu-item-link"> <span> <i
+						class="feather-list"></i> Roll Call Marks And %
+				</span>
+			</a>
+			</span>
+			</li>
+			
+		</ul>
+	</div>
+</div>

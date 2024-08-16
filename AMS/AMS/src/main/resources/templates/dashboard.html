@@ -1,0 +1,156 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+			<div class="card mb-4">
+				<div class="card-body status-card">
+					<div class="row align-items-center">
+						<div class="col-3">
+							<i class="feather-users h1 text-primary"></i>
+						</div>
+						<div class="col-9">
+							<p class="mb-1 font-weight-bolder h4">
+								<span class="counter-up"> <span th:text="${totalStudents}"></span></span>
+							</p>
+							<p class="mb-0 text-black-50">Today Students</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+			<div class="card mb-4">
+				<div class="card-body status-card">
+					<div class="row align-items-center">
+						<div class="col-3">
+							<i class="feather-users h1 text-primary"></i>
+						</div>
+						<div class="col-9">
+							<p class="mb-1 font-weight-bolder h4">
+								<span class="counter-up"><span th:text="${totalTeachers}"></span></span>
+							</p>
+							<p class="mb-0 text-black-50">Total Teachers</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+			<div class="card mb-4">
+				<div class="card-body status-card">
+					<div class="row align-items-center">
+						<div class="col-3">
+							<i class="feather-list h1 text-primary"></i>
+						</div>
+						<div class="col-9">
+							<p class="mb-1 font-weight-bolder h4">
+								<span class="counter-up"><span th:text="${totalAttendancePercentage}"></span></span>
+							</p>
+							<p class="mb-0 text-black-50">Attendance %</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row align-items-end">
+		<div class="col-12 col-xl-7 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4>Monthly Attendance Summary</h4>
+						<div class="">
+
+							<img th:src="@{/img/logo.png}" alt="" class="rounded-circle"
+								style="width: 50px; height: 50px;">
+						</div>
+					</div>
+
+					<div class="chart-container" style="position: relative;">
+						<canvas id="myChart" class="myChart" height="150"></canvas>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-xl-5 col-md-6 mb-4">
+			<div class="">
+				<div class="card item-corousel-card">
+					<div class="card-body">
+						<div id="carouselExampleIndicators"
+							class="carousel slide item-corousel" data-ride="carousel">
+							<ol class="carousel-indicators" style="bottom: -30px;">
+								<li data-target="#carouselExampleIndicators" data-slide-to="0"
+									class="bg-primary active"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="1"
+									class="bg-primary"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="2"
+									class="bg-primary"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="3"
+									class="bg-primary"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<div class="item-card">
+										<div class="d-flex justify-content-between align-items-end">
+											<div class="flex-grow-1">
+												<p class="font-weight-bolder text-black-50 mb-0">UCSY</p>
+												<h4 class="mb-3 item-card-des">Main Building</h4>
+											</div>
+											<img th:src="@{/img/ucsy-1.jpg}" alt="" class="item-card-img">
+										</div>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<div class="item-card">
+										<div class="d-flex justify-content-between align-items-end">
+											<div class="flex-grow-1">
+												<p class="font-weight-bolder text-black-50 mb-0">UCSY</p>
+												<h4 class="mb-3 item-card-des">Machine Room</h4>
+
+											</div>
+											<img th:src="@{/img/slide-3.jpg}" alt="" class="item-card-img">
+										</div>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<div class="item-card">
+										<div class="d-flex justify-content-between align-items-end">
+											<div class="flex-grow-1">
+												<p class="font-weight-bolder text-black-50 mb-0">UCSY</p>
+												<h4 class="mb-3 item-card-des">Building-E Corridor</h4>
+
+											</div>
+											<img th:src="@{/img/slide-4.jpg}" alt="" class="item-card-img">
+										</div>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<div class="item-card">
+										<div class="d-flex justify-content-between align-items-end">
+											<div class="flex-grow-1">
+												<p class="font-weight-bolder text-black-50 mb-0">UCSY</p>
+												<h4 class="mb-3 item-card-des">Campus</h4>
+
+											</div>
+											<img th:src="@{/img/slide-2.jpg}" alt="" class="item-card-img">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br> <br> <br> <br> <br>
+
+</div>
+
+<div th:replace="/commons/footer.html"></div>

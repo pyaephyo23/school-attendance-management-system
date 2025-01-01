@@ -55,9 +55,6 @@ A Maven-based attendance management system for schools, built using Spring Boot 
 - **Teacher Panel**: Mark attendance and view class reports.
 - **Student/Parent Portal**: View attendance records and receive notifications.
 
-## Contributing
-
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
 ## License
 

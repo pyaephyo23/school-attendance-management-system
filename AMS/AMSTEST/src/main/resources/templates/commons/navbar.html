@@ -1,0 +1,36 @@
+<div class="row header mb-4">
+	<div class="col-12">
+		<div class="p-2 bg-primary d-flex  justify-content-between align-items-center rounded ">
+			<button class="show-sidebar-btn btn btn-primary d-block d-lg-none">
+				<i class="feather-menu text-light" style="font-size: 2em;"></i>
+			</button>
+			<h5 class="mb-0 ml-2 text-light d-none d-lg-block fw-bold">
+				Academic Year (<span th:text="${dt1}"></span>-<span th:text="${dt}"></span>)
+				<span class="" th:text="${semName}"></span>
+			</h5>
+
+			<div class="dropdown">
+				<button class="btn btn-light dropdown-toggle profile-btn" type="button" id="dropdownMenuButton"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img th:src="@{/img/default-profile.png}" class="user-img" alt="">
+					<span th:text="${user.getName()}"></span>
+				</button>
+				<div class="dropdown-menu" style="width: 230px;" aria-labelledby="dropdownMenuButton">
+					<div th:if="${pwd1}">
+						<a class="dropdown-item" href="/classRoster/change-password">Change Password</a>
+					</div>
+					<div th:if="${pwd2}">
+						<a class="dropdown-item" href="/teacher/change-password">Change Password</a>
+					</div>
+					<div th:if="${pwd3}">
+						<a class="dropdown-item" href="/student/change-password">Change Password</a>
+					</div>
+
+					<div class="dropdown-divider"></div>
+
+					<a class="dropdown-item" href="/logout">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

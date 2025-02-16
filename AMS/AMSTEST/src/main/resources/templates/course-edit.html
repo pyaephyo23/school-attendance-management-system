@@ -1,0 +1,85 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="/classRoster/dashboard"><i class="feather-home"></i></a></li>
+					<li class="breadcrumb-item">Edit
+						Course Info</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-edit text-primary mr-2"></i>
+							Edit Course Info
+						</h4>
+						<a href="/classRoster/course-view" class="btn btn-outline-primary"> <i class="feather-list"></i>
+						</a>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-12">
+							<form th:action="@{/classRoster/course-edit}" th:each="li : ${list}" method="post">
+
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="code"><i class="fas fa-book mr-2 text-primary"></i>Course Code:
+											</label> <input type="text" class="form-control" id="code" name="code"
+												th:value="${li.getCode()}" disabled />
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="coursename"><i
+													class="fas fa-book-open mr-2 text-primary"></i>Course Name:
+											</label> <input type="text" class="form-control" id="coursename"
+												name="courseName" th:value="${li.getCourseName()}" required/>
+										</div>
+									</div>
+
+
+								</div>
+
+								<div class="form-group">
+									<label for="description"><i class="fas fa-book-reader mr-2 text-primary"></i>Course
+										Description: </label>
+									<textarea class="form-control" rows="10" id="description" name="description"
+										th:value="${li.getDescription()}"></textarea>
+								</div>
+
+								<div class="row">
+
+									<input type="text" class="form-control" th:name="id" th:value="${li.getId()}"
+										hidden />
+									<input type="text" class="form-control" th:name="code" th:value="${li.getCode()}"
+										hidden />
+
+								</div>
+
+								<hr>
+								<div class="row justify-content-end align-items-center">
+										<button type="button" class="btn btn-outline-danger mr-3"
+											th:onclick="|window.location.href='/classRoster/course-view'|">Cancel</button>
+										<button type="submit" class="btn btn-outline-primary float-right">Update</button>
+									
+								</div>
+
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div th:replace="/commons/footer.html"></div>

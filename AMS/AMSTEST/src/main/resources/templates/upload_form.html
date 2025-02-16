@@ -1,0 +1,88 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="/admin/dashboard"><i class="feather-home"></i></a></li>
+					<li class="breadcrumb-item"><span th:text="${tit}"></span>Register
+						Students</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-plus-circle text-primary mr-2"></i>Register
+							Students
+						</h4>
+						<a href="/admin/student-list" class="btn btn-outline-primary">
+							<i class="feather-list"></i>
+						</a>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-12 display-table">
+
+
+							<form method="POST" enctype="multipart/form-data" th:action="@{/admin/upload}">
+								<div class="row d-flex justify-content-start align-items-center">
+									<div class="col-8 col-md-6">
+										<input type="file" name="file" class="form-control p-1" />
+									</div>
+									<div class="col-4 col-md-3">
+										<button type="submit" class="btn btn-outline-primary">Upload</button>
+									</div>
+								</div>
+							</form>
+							<div th:if="${dupFileError}">  
+										<p th:text="${dupFileError}"></p>  
+									</div>
+							<p class="text-primary my-4" th:text="${filename}"></p>
+							
+							<hr>
+							<table class="display table-striped table-primary table-bordered" style="width: 100%;">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Email</th>
+										<th>Roll No</th>
+										<th>NRC No</th>
+										<th>DOB</th>
+										<th>Phone No</th>
+										<th>Major</th>
+										<th>Register Date</th>
+										<th>Semester</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="row : ${excelData}">
+										<td class="text-nowrap" th:text="${row.name}"></td>
+										<td class="text-nowrap" th:text="${row.email}"></td>
+										<td class="text-nowrap" th:text="${row.rollNo}"></td>
+										<td class="text-nowrap" th:text="${row.nrcNo}"></td>
+										<td class="text-nowrap" th:text="${row.dob}"></td>
+										<td class="text-nowrap" th:text="${row.phoneNo}"></td>
+										<td class="text-nowrap" th:text="${row.major}"></td>
+										<td class="text-nowrap" th:text="${row.registerDate}"></td>
+										<td class="text-nowrap" th:text="${row.semester}"></td>
+									</tr>
+								</tbody>
+							</table>
+							<hr>
+							<form method="POST" th:action="@{/admin/savefile}">
+								<button type="submit" class="btn btn-outline-primary mb-5 w-100">Save</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div th:replace="/commons/footer.html"></div>

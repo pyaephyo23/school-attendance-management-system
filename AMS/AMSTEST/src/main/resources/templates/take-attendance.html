@@ -1,0 +1,89 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/stsidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="dashboard"><i class="feather-home"></i></a></li>
+					<li class="breadcrumb-item">Student List</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-list text-primary mr-2"></i>Student List
+						</h4>
+						<div class="">
+							<a href="/teacher/take-attendance" class="btn btn-outline-primary">
+								<i class="fas fa-arrow-left mr-2"></i>Back
+							</a>
+						</div>
+					</div>
+					<hr>
+
+					<div class="col-12 display-table">
+						<form th:action="@{/teacher/take-std-attendance}" method="post" th:object="${atten}">
+							<table id="example" class="display table-primary table-striped table-bordered"
+								style="width: 100%">
+								<thead>
+									<tr>
+										<th>Roll No.</th>
+										<th>Name</th>
+										<th>Semester</th>
+										<th>Major</th>
+										<th>Remark</th>
+										<th>Attendance<br> Yes &nbsp; &nbsp; No</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each=" st : ${student}">
+										<td th:text="${st.getRollNo()}"></td>
+										<td th:text="${st.getName()}"></td>
+										<td th:text="${st.getSemester()}"></td>
+										<td th:text="${st.getMajor()}"></td>
+										<td><input type="text" name="remark">
+
+										<td>
+											<input type="text" name="stdId" th:value="${st.getId()}" hidden>
+											
+											<select class="custom-select" id="dow" name="isPresent">
+												
+												<option th:value="1" th:text="Yes"></option>
+												<option th:value="0" th:text="No"></option>
+												
+											</select>
+
+											<!--
+											<label for="checkbox1">Yes</label>
+											<input type="checkbox" th:name="isPresent" th:value="1" checked
+												id="checkbox">&nbsp; &nbsp;
+											<label for="checkbox1" class="form-check-label">No</label>
+											<input type="checkbox" class="form-check-input" th:name="isPresent"
+												th:value="0" id="checkbox1">
+												-->
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<hr>
+							<input type="text" th:value="${courseId}" th:name="courseId" hidden="hidden">
+							<div th:if="${t}">
+								<button type="submit" class="btn btn-outline-primary w-100 mb-5" 
+															th:value="Submit" >Save</button>
+							</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:replace="/commons/footer.html"></div>

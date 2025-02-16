@@ -1,0 +1,63 @@
+<div th:replace="/commons/header.html"></div>
+<div th:replace="/commons/sidebar.html"></div>
+<div class="col-12 col-lg-9 col-xl-10 vh-100 content">
+	<div th:replace="/commons/navbar.html"></div>
+	<div class="row">
+		<div class="col-12">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-white mb-4">
+					<li class="breadcrumb-item"><a href="/admin/dash"><i class="feather-home"></i></a></li>
+					<li class="breadcrumb-item"><span th:text="${tit}"></span>Reset Password
+						</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h4 class="mb-0">
+							<i class="feather-edit text-primary mr-2"></i>Reset Password
+						</h4>
+					</div>
+					<hr>
+					<form th:action="@{/admin/resetPwd}" th:each="li: ${list}" method="post">
+						
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="name"><i class="fas fa-user mr-2 text-primary"></i>ID: </label> <input
+										type="text" class="form-control" th:name="id"
+										th:value="${li.getId()}" disabled />
+								</div>
+							
+							</div>
+
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="email"><i class="fas fa-envelope mr-2 text-primary"></i>Email: </label>
+									<input type="text" class="form-control" id="email" th:name="email"
+										th:value="${li.getEmail()}" disabled/>
+								</div>
+							
+								<input type="text" class="form-control" th:name="id" th:value="${li.getId()}" hidden />
+								<input type="text" class="form-control" th:name="role" th:value="${li.getRole()}" hidden />
+							</div>
+						</div>
+						<hr>
+
+						<div class="row d-flex justify-content-end">
+							<button type="button" class="btn btn-outline-danger mr-3"
+								th:onclick="|window.location.href='/admin/dash'|">Cancel</button>
+							<button type="submit" class="btn btn-outline-primary float-right">Reset Password</button>
+
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+		<div th:replace="/commons/footer.html"></div>
